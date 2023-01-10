@@ -28,7 +28,8 @@ __published:	// IDE-managed Components
 private:	// User declarations
 public:		// User declarations
 	__fastcall TNavigacijaForma(TComponent* Owner);
-    int ukupni_bodovi;
+	int ukupni_bodovi;
+
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TNavigacijaForma *NavigacijaForma;

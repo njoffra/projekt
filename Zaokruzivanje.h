@@ -21,7 +21,6 @@ __published:	// IDE-managed Components
 	TRadioButton *Odgovor3;
 	TRadioButton *Odgovor4;
 	TText *TrenutniBodovi;
-	TLabel *Label1;
 	void __fastcall Odgovor1Change(TObject *Sender);
 	void __fastcall Odgovor2Change(TObject *Sender);
 	void __fastcall Odgovor3Change(TObject *Sender);

@@ -197,7 +197,7 @@ object BrojForma: TBrojForma
     Size.Width = 201.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
-    StyleLookup = 'listboxheaderlabel'
+    StyleLookup = 'labelstyle'
     TabOrder = 21
   end
   object Izlaz: TButton

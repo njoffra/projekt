@@ -58,12 +58,10 @@ void izmjesaj_pitanja(){
 
 		}
 
-		ZaokruzivanjeForma->Label1->Text = pitanja.size(); // za provjeru
+
 		pitanjaFile.close();
 	}
-	else{
-		ZaokruzivanjeForma->Label1->Text = "nije otvorfeno" ;
-	}
+	
 
 
 	fstream odg1File;
@@ -79,8 +77,6 @@ void izmjesaj_pitanja(){
 
 		odg1File.close();
 
-	}else{
-		ZaokruzivanjeForma->Label1->Text = "nije otvorfeno" ;
 	}
 
 	fstream odg2File;
@@ -96,8 +92,6 @@ void izmjesaj_pitanja(){
 
 		odg2File.close();
 
-	}else{
-		ZaokruzivanjeForma->Label1->Text = "nije otvorfeno" ;
 	}
 
 	fstream tacan_odgFile;
@@ -112,8 +106,6 @@ void izmjesaj_pitanja(){
 		}
 
 		tacan_odgFile.close();
-	}else{
-		ZaokruzivanjeForma->Label1->Text = "nije otvorfeno" ;
 	}
 
 	srand(time(NULL));
@@ -165,21 +157,25 @@ __fastcall TZaokruzivanjeForma::TZaokruzivanjeForma(TComponent* Owner)
 void __fastcall TZaokruzivanjeForma::Odgovor1Change(TObject *Sender)
 {
 	izabran_odgovor = 1;
+	PotvrdiButton->Enabled=true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TZaokruzivanjeForma::Odgovor2Change(TObject *Sender)
 {
-    izabran_odgovor = 2;
+	izabran_odgovor = 2;
+	PotvrdiButton->Enabled=true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TZaokruzivanjeForma::Odgovor3Change(TObject *Sender)
 {
-    izabran_odgovor = 3;
+	izabran_odgovor = 3;
+	PotvrdiButton->Enabled=true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TZaokruzivanjeForma::Odgovor4Change(TObject *Sender)
 {
-    izabran_odgovor = 4;
+	izabran_odgovor = 4;
+	PotvrdiButton->Enabled=true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TZaokruzivanjeForma::PotvrdiButtonClick(TObject *Sender)
@@ -214,7 +210,7 @@ void __fastcall TZaokruzivanjeForma::PotvrdiButtonClick(TObject *Sender)
 				}
                 broj_pokusaja++;
 
-	if(broj_pokusaja < pitanja.size()){
+	if(broj_pokusaja < 10){
     tacan_odg_rb = rand()% 3 + 1;
 			TekstPitanja->Text = pitanja[broj_pokusaja];
 			if(tacan_odg_rb==1){
@@ -254,6 +250,7 @@ void __fastcall TZaokruzivanjeForma::PotvrdiButtonClick(TObject *Sender)
 				}
 			}
 			Odgovor4->Text = "Ne znam";
+            PotvrdiButton->Enabled=false;
 
 	}
 	else{

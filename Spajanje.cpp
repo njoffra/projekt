@@ -64,6 +64,9 @@ public:
 	string getPitanje(){
 		return this->pitanje;
 	}
+	void operator!(){
+		this->daj_parove().clear();
+	}
 
 };
 
@@ -81,7 +84,7 @@ TSpajanjeForma *SpajanjeForma;
 
 void omoguci_desne(){
 
-    SpajanjeForma->Desno1->Enabled = true;
+	SpajanjeForma->Desno1->Enabled = true;
 	SpajanjeForma->Desno2->Enabled = true;
 	SpajanjeForma->Desno3->Enabled = true;
 	SpajanjeForma->Desno4->Enabled = true;
@@ -115,8 +118,8 @@ void dodaj_zadatak(){
 			while (getline(lijeva_strana_file, line1) && getline(desna_strana_file, line2)){
 				if(line1 == "KRAJ"){
 					svi_zadaci.push_back(z);
-					z.daj_parove().clear();
-                    z = Zadaci();
+					!z;
+					z = Zadaci();
 				}
 				else {
 					Spajanje temp(line1, line2);

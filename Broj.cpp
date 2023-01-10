@@ -299,7 +299,7 @@ void __fastcall TBrojForma::VrijemeTimer(TObject *Sender) //This event occurs ev
 		DecodeTime(Diff, Hour, Min, Sec, MSec);
 		VrijemeText->Text = String(Sec); //+" :"+String(MSec);
 
-		if(Sec==20){
+		if(Sec==40){
 		   ButtonNum1->Enabled = false;
 		   ButtonNum2->Enabled = false;
 		   ButtonNum3->Enabled = false;
@@ -315,7 +315,7 @@ void __fastcall TBrojForma::VrijemeTimer(TObject *Sender) //This event occurs ev
 		   ButtonJednako->Enabled = false;
 		   EditDisplay->Enabled = false;
 		   VrijemeText->Text = "Vrijeme isteklo";
-           Bodovi->Text="Osvojili ste 0 bodova. Luzeru.";
+           Bodovi->Text="Osvojili ste 0 bodova.";
 		   Vrijeme->Enabled = False;
 		}
 

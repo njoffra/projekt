@@ -16,6 +16,7 @@ object ZaokruzivanjeForma: TZaokruzivanjeForma
     Size.PlatformDefault = False
   end
   object PotvrdiButton: TButton
+    Enabled = False
     Position.X = 256.000000000000000000
     Position.Y = 392.000000000000000000
     Size.Width = 136.000000000000000000
@@ -56,11 +57,5 @@ object ZaokruzivanjeForma: TZaokruzivanjeForma
   object TrenutniBodovi: TText
     Position.X = 48.000000000000000000
     Position.Y = 168.000000000000000000
-  end
-  object Label1: TLabel
-    Position.X = 496.000000000000000000
-    Position.Y = 224.000000000000000000
-    Text = 'Label1'
-    TabOrder = 7
   end
 end
