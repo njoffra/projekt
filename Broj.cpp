@@ -299,14 +299,14 @@ if(*result==*topscore){
 //---------------------------------------------------------------------------
 
 
-void __fastcall TBrojForma::VrijemeTimer(TObject *Sender) //This event occurs every second.
+void __fastcall TBrojForma::VrijemeTimer(TObject *Sender) //ovaj event se desava svake sekunde
 {
 		TDateTime Diff = Now() - StartTime;
 		Word Hour, Min, Sec, MSec;
 		DecodeTime(Diff, Hour, Min, Sec, MSec);
 		VrijemeText->Text = String(Sec); //+" :"+String(MSec);
 
-		if(Sec==999){
+		if(Sec==40){
 		   ButtonNum1->Enabled = false;
 		   ButtonNum2->Enabled = false;
 		   ButtonNum3->Enabled = false;
@@ -338,6 +338,16 @@ void __fastcall TBrojForma::IzlazPraviClick(TObject *Sender)
 	topscore.reset();
 	ptrsuma.reset();
 	result.reset();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TBrojForma::zatvori(TObject *Sender, TCloseAction &Action)
+{
+NavigacijaForma->BrojButton->Enabled = false;
+		NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+		NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		this->Close();
+		NavigacijaForma->Show();
 }
 //---------------------------------------------------------------------------
 

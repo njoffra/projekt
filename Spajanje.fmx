@@ -7,6 +7,7 @@ object SpajanjeForma: TSpajanjeForma
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = zatvori
   DesignerMasterStyle = 0
   object IzlazButton: TButton
     Position.X = 256.000000000000000000

@@ -44,84 +44,63 @@ void ocisti(){
 
 
 void izmjesaj_pitanja(){
-
 // Kad ovaj repetativni kod ubacim u funkciju budu neki errori bez ikakve poruke
-
-	fstream pitanjaFile;
-	pitanjaFile.open("fajlovi\\pitanja.txt", ios::in);
-	if(pitanjaFile.is_open()){
-		string line;
-		while (getline(pitanjaFile, line)){
-
-		String novi_string(line.c_str());// std::string i String nje isto
-		pitanja.push_back(novi_string);
-
+	try{
+		fstream pitanjaFile;
+		pitanjaFile.open("fajlovi\\pitanja.txt", ios::in);
+		if(pitanjaFile.is_open()){
+			string line;
+			while (getline(pitanjaFile, line)){
+				String novi_string(line.c_str()); // std::string i String nje isto
+				pitanja.push_back(novi_string);
+			}
+			pitanjaFile.close();
 		}
-
-
-		pitanjaFile.close();
-	}
-	
-
-
-	fstream odg1File;
-	odg1File.open("fajlovi\\odg1.txt", ios::in);
-	if(odg1File.is_open()){
-		string line;
-		while (getline(odg1File, line)){
-
-		String novi_string(line.c_str());
-		odg1.push_back(novi_string);
-
+		fstream odg1File;
+		odg1File.open("fajlovi\\odg1.txt", ios::in);
+		if(odg1File.is_open()){
+			string line;
+			while (getline(odg1File, line)){
+				String novi_string(line.c_str());
+				odg1.push_back(novi_string);
+			}
+			odg1File.close();
 		}
-
-		odg1File.close();
-
-	}
-
-	fstream odg2File;
-	odg2File.open("fajlovi\\odg2.txt", ios::in);
-	if(odg2File.is_open()){
-		string line;
-		while (getline(odg2File, line)){
-
-		String novi_string(line.c_str());
-		odg2.push_back(novi_string);
-
+        fstream odg2File;
+        odg2File.open("fajlovi\\odg2.txt", ios::in);
+        if(odg2File.is_open()){
+            string line;
+			while (getline(odg2File, line)){
+                String novi_string(line.c_str());
+                odg2.push_back(novi_string);
+            }
+			odg2File.close();
 		}
-
-		odg2File.close();
-
-	}
-
-	fstream tacan_odgFile;
-	tacan_odgFile.open("fajlovi\\tacanOdg.txt", ios::in);
-	if(tacan_odgFile.is_open()){
-		string line;
-		while (getline(tacan_odgFile, line)){
-
-		String novi_string(line.c_str());
-		tacan_odg.push_back(novi_string);
-
+        fstream tacan_odgFile;
+        tacan_odgFile.open("fajlovi\\tacanOdg.txt", ios::in);
+        if(tacan_odgFile.is_open()){
+			string line;
+            while (getline(tacan_odgFile, line)){
+                String novi_string(line.c_str());
+                tacan_odg.push_back(novi_string);
+			}
+			tacan_odgFile.close();
 		}
-
-		tacan_odgFile.close();
+		srand(time(NULL));
+		seed = rand()%20+1;//neki random seed da svaki put budu drugaciji redoslijedi
+		std::srand (seed);
+		random_shuffle(pitanja.begin(), pitanja.end());
+		std::srand (seed);
+		random_shuffle(odg1.begin(), odg1.end());
+		std::srand (seed);
+		random_shuffle(odg2.begin(), odg2.end());
+		std::srand (seed);
+		random_shuffle(tacan_odg.begin(), tacan_odg.end());
 	}
+	catch (const std::ios_base::failure& e) {
+		ShowMessage("Error kod otvaranja file-a");
 
-	srand(time(NULL));
-	seed = rand()%20+1; //neki random seed da svaki put budu drugaciji redoslijedi
-
-	std::srand (seed);
-	random_shuffle(pitanja.begin(), pitanja.end());
-
-	std::srand (seed);
-	random_shuffle(odg1.begin(), odg1.end());
-
-	std::srand (seed);
-	random_shuffle(odg2.begin(), odg2.end());
-
-	std::srand (seed);
-	random_shuffle(tacan_odg.begin(), tacan_odg.end());
+	}
 }
 
 __fastcall TZaokruzivanjeForma::TZaokruzivanjeForma(TComponent* Owner)
@@ -265,3 +244,14 @@ void __fastcall TZaokruzivanjeForma::PotvrdiButtonClick(TObject *Sender)
 	TrenutniBodovi->Text = skor;
 }
 //---------------------------------------------------------------------------
+void __fastcall TZaokruzivanjeForma::zatvaranje(TObject *Sender, TCloseAction &Action)
+
+{
+	NavigacijaForma->ZaokruziButton->Enabled = false;
+		NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+		NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		this->Close();
+		NavigacijaForma->Show();
+}
+//---------------------------------------------------------------------------
+

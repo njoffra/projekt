@@ -7,5 +7,6 @@ object VjesalaForma: TVjesalaForma
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = zatvori
   DesignerMasterStyle = 0
 end

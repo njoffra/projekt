@@ -26,6 +26,7 @@ __published:	// IDE-managed Components
 	void __fastcall Odgovor3Change(TObject *Sender);
 	void __fastcall Odgovor4Change(TObject *Sender);
 	void __fastcall PotvrdiButtonClick(TObject *Sender);
+	void __fastcall zatvaranje(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TZaokruzivanjeForma(TComponent* Owner);

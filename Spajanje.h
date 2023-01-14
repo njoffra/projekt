@@ -49,6 +49,7 @@ __published:	// IDE-managed Components
 	void __fastcall Desno6Click(TObject *Sender);
 	void __fastcall Desno7Click(TObject *Sender);
 	void __fastcall Desno8Click(TObject *Sender);
+	void __fastcall zatvori(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TSpajanjeForma(TComponent* Owner);

@@ -48,6 +48,7 @@ __published:	// IDE-managed Components
 	void __fastcall IzlazClick(TObject *Sender);
 	void __fastcall VrijemeTimer(TObject *Sender);
 	void __fastcall IzlazPraviClick(TObject *Sender);
+	void __fastcall zatvori(TObject *Sender, TCloseAction &Action);
 	//void __fastcall EditClick(TObject *Sender);
 	//void __fastcall ButtonRezultatClick(TObject *Sender);
 private:
