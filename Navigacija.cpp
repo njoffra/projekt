@@ -6,7 +6,7 @@
 #include "Navigacija.h"
 #include "Broj.h"
 #include "Spajanje.h"
-#include "Vjesala.h"
+#include "Klik.h"
 #include "Zaokruzivanje.h"
 #include "Asocijacije.h"
 //---------------------------------------------------------------------------
@@ -39,9 +39,9 @@ void __fastcall TNavigacijaForma::AsocijacijeButtonClick(TObject *Sender)
 	this->Hide();
 }
 //---------------------------------------------------------------------------
-void __fastcall TNavigacijaForma::VjesalaButtonClick(TObject *Sender)
+void __fastcall TNavigacijaForma::KlikButtonClick(TObject *Sender)
 {
-    VjesalaForma->Show();
+	KlikForma->Show();
 	this->Hide();
 }
 //---------------------------------------------------------------------------

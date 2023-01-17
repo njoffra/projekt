@@ -17,13 +17,13 @@ __published:	// IDE-managed Components
 	TButton *BrojButton;
 	TButton *SpajanjeButton;
 	TButton *AsocijacijeButton;
-	TButton *VjesalaButton;
+	TButton *KlikButton;
 	TButton *ZaokruziButton;
 	TText *UkupniBodovi;
 	void __fastcall BrojButtonClick(TObject *Sender);
 	void __fastcall SpajanjeButtonClick(TObject *Sender);
 	void __fastcall AsocijacijeButtonClick(TObject *Sender);
-	void __fastcall VjesalaButtonClick(TObject *Sender);
+	void __fastcall KlikButtonClick(TObject *Sender);
 	void __fastcall ZaokruziButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

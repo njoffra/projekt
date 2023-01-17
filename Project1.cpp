@@ -8,11 +8,11 @@
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
 USEFORM("Spajanje.cpp", SpajanjeForma);
-USEFORM("Vjesala.cpp", VjesalaForma);
+USEFORM("Klik.cpp", KlikForma);
+USEFORM("Zaokruzivanje.cpp", ZaokruzivanjeForma);
 USEFORM("Asocijacije.cpp", AsocijacijeForma);
 USEFORM("Broj.cpp", BrojForma);
 USEFORM("Navigacija.cpp", NavigacijaForma);
-USEFORM("Zaokruzivanje.cpp", ZaokruzivanjeForma);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -23,7 +23,7 @@ extern "C" int FMXmain()
 		Application->CreateForm(__classid(TBrojForma), &BrojForma);
 		Application->CreateForm(__classid(TSpajanjeForma), &SpajanjeForma);
 		Application->CreateForm(__classid(TAsocijacijeForma), &AsocijacijeForma);
-		Application->CreateForm(__classid(TVjesalaForma), &VjesalaForma);
+		Application->CreateForm(__classid(TKlikForma), &KlikForma);
 		Application->CreateForm(__classid(TZaokruzivanjeForma), &ZaokruzivanjeForma);
 		Application->Run();
 	}

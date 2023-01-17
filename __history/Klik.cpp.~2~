@@ -1,0 +1,65 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+#include <random>
+#include <stdlib.h>
+#include <ctime>
+#pragma hdrstop
+
+#include "Klik.h"
+#include "Navigacija.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+using namespace std;
+TVjesalaForma *VjesalaForma;
+int skor;
+class Rijec{
+private:
+	int duzina;
+	string rijec;
+public:
+	void setDuzina(){
+		this->duzina=n;
+	}
+	void setRijec(string rijec){
+		this->rijec=rijec;
+	}
+	int getDuzina(){
+		return this->duzina;
+	}
+	string getRijec(){
+		return this->rijec;
+	}
+
+};
+class Pokusaj:public Rijec{
+	private:
+	char slovo;
+	public:
+	void setSlovo(char slovo){
+		this->slovo=slovo;
+	}
+	char getSlovo(){
+		return this->slovo;
+	}
+};
+//---------------------------------------------------------------------------
+__fastcall TVjesalaForma::TVjesalaForma(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TVjesalaForma::zatvori(TObject *Sender, TCloseAction &Action)
+{
+NavigacijaForma->VjesalaButton->Enabled = false;
+		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		this->Close();
+		NavigacijaForma->Show();
+}
+//---------------------------------------------------------------------------
+

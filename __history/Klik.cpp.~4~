@@ -1,0 +1,70 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+#include <random>
+#include <stdlib.h>
+#include <ctime>
+#pragma hdrstop
+
+#include "Klik.h"
+#include "Navigacija.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+using namespace std;
+TKlikForma *KlikForma;
+int skor;
+class Igrac{
+private:
+	int skor;
+public:
+	virtual void setSkor(int broj_klikova){
+		this->skor=(int)(broj_klikova/3);
+	}
+	int getSkor(){
+		return this->skor;
+	}
+};
+class Igrac1:public Igrac{
+private:
+	int klikovi;
+public:
+	int getKlikovi(){
+		return this->klikovi;
+	}
+	void pokreniTimer1(){
+
+	}
+	//void setSkor() override
+};
+class Igrac2:public Igrac{
+private:
+	int klikovi;
+public:
+	int getKlikovi(){
+		return this->klikovi;
+	}
+	void pokreniTimer1(){
+
+	}
+	//void setSkor() override
+};
+//---------------------------------------------------------------------------
+__fastcall TKlikForma::TKlikForma(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TKlikForma::zatvori(TObject *Sender, TCloseAction &Action)
+{
+NavigacijaForma->KlikButton->Enabled = false;
+		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		this->Close();
+		NavigacijaForma->Show();
+}
+//---------------------------------------------------------------------------
+

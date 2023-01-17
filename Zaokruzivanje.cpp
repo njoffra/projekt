@@ -248,8 +248,8 @@ void __fastcall TZaokruzivanjeForma::zatvaranje(TObject *Sender, TCloseAction &A
 
 {
 	NavigacijaForma->ZaokruziButton->Enabled = false;
-		NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
-		NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
 		this->Close();
 		NavigacijaForma->Show();
 }

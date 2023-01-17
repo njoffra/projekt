@@ -38,6 +38,7 @@ __published:	// IDE-managed Components
 	TTimer *Vrijeme;
 	TLabel *VrijemeText;
 	TButton *IzlazPravi;
+	TButton *Button2;
 	void __fastcall Label1Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall NumberClick2(TObject *Sender);
