@@ -17,8 +17,10 @@ object KlikForma: TKlikForma
     Size.PlatformDefault = False
     TabOrder = 0
     Text = 'Igrac1Dugme'
+    OnClick = Igrac1DugmeClick
   end
   object Igrac2Dugme: TButton
+    Enabled = False
     Position.X = 376.000000000000000000
     Position.Y = 232.000000000000000000
     Size.Width = 113.000000000000000000
@@ -26,10 +28,11 @@ object KlikForma: TKlikForma
     Size.PlatformDefault = False
     TabOrder = 1
     Text = 'Igrac2Dugme'
+    OnClick = Igrac2DugmeClick
   end
   object IzlazDugme: TButton
-    Position.X = 280.000000000000000000
-    Position.Y = 360.000000000000000000
+    Position.X = 272.000000000000000000
+    Position.Y = 312.000000000000000000
     TabOrder = 2
     Text = 'IzlazDugme'
     OnClick = IzlazDugmeClick
@@ -45,6 +48,13 @@ object KlikForma: TKlikForma
     Position.X = 384.000000000000000000
     Position.Y = 176.000000000000000000
     Size.Width = 97.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object RezultatText: TText
+    Position.X = 224.000000000000000000
+    Position.Y = 360.000000000000000000
+    Size.Width = 185.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
   end
