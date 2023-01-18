@@ -20,11 +20,22 @@ __published:	// IDE-managed Components
 	TText *Igrac1Tekst;
 	TText *Igrac2Tekst;
 	TText *RezultatText;
+	TTimer *Timer1;
+	TTimer *Timer2;
+	TLabel *VrijemeText1;
+	TLabel *VrijemeText2;
+	TLabel *VrIsteklo1;
+	TLabel *VrIsteklo2;
 	void __fastcall zatvori(TObject *Sender, TCloseAction &Action);
 	void __fastcall IzlazDugmeClick(TObject *Sender);
 	void __fastcall Igrac1DugmeClick(TObject *Sender);
 	void __fastcall Igrac2DugmeClick(TObject *Sender);
-private:	// User declarations
+	void __fastcall Timer1Timer(TObject *Sender);
+	//void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Timer2Timer(TObject *Sender);
+private:
+	TDateTime StartTime1;
+	TDateTime StartTime2;	// User declarations
 public:		// User declarations
 	__fastcall TKlikForma(TComponent* Owner);
 };

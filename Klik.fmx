@@ -58,4 +58,46 @@ object KlikForma: TKlikForma
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
   end
+  object VrijemeText1: TLabel
+    Position.X = 168.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 33.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'test'
+    Visible = False
+    TabOrder = 6
+  end
+  object VrijemeText2: TLabel
+    Position.X = 416.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'test'
+    Visible = False
+    TabOrder = 5
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 168
+    Top = 32
+  end
+  object Timer2: TTimer
+    OnTimer = Timer2Timer
+    Left = 416
+    Top = 40
+  end
+  object VrIsteklo1: TLabel
+    Position.X = 136.000000000000000000
+    Position.Y = 104.000000000000000000
+    StyleLookup = 'listboxitemlabel'
+    TabOrder = 10
+  end
+  object VrIsteklo2: TLabel
+    Position.X = 384.000000000000000000
+    Position.Y = 104.000000000000000000
+    StyleLookup = 'listboxitemlabel'
+    TabOrder = 9
+  end
 end
