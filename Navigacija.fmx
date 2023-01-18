@@ -14,7 +14,7 @@ object NavigacijaForma: TNavigacijaForma
     Size.Width = 121.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 3
     Text = 'BrojButton'
     OnClick = BrojButtonClick
   end
@@ -24,23 +24,13 @@ object NavigacijaForma: TNavigacijaForma
     Size.Width = 121.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 2
     Text = 'SpajanjeButton'
     OnClick = SpajanjeButtonClick
   end
-  object AsocijacijeButton: TButton
-    Position.X = 248.000000000000000000
-    Position.Y = 216.000000000000000000
-    Size.Width = 121.000000000000000000
-    Size.Height = 41.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 2
-    Text = 'AsocijacijeButton'
-    OnClick = AsocijacijeButtonClick
-  end
   object KlikButton: TButton
     Position.X = 248.000000000000000000
-    Position.Y = 280.000000000000000000
+    Position.Y = 392.000000000000000000
     Size.Width = 121.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
@@ -50,7 +40,7 @@ object NavigacijaForma: TNavigacijaForma
   end
   object ZaokruziButton: TButton
     Position.X = 248.000000000000000000
-    Position.Y = 344.000000000000000000
+    Position.Y = 216.000000000000000000
     Size.Width = 121.000000000000000000
     Size.Height = 41.000000000000000000
     Size.PlatformDefault = False
@@ -60,9 +50,25 @@ object NavigacijaForma: TNavigacijaForma
   end
   object UkupniBodovi: TText
     Position.X = 248.000000000000000000
-    Position.Y = 400.000000000000000000
+    Position.Y = 264.000000000000000000
     Size.Width = 121.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
+  end
+  object SingleplayerText: TText
+    Position.X = 216.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Singleplayer igrice'
+  end
+  object MultiplayerText: TText
+    Position.X = 216.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Multiplayer igrice'
   end
 end

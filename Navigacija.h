@@ -16,13 +16,13 @@ class TNavigacijaForma : public TForm
 __published:	// IDE-managed Components
 	TButton *BrojButton;
 	TButton *SpajanjeButton;
-	TButton *AsocijacijeButton;
 	TButton *KlikButton;
 	TButton *ZaokruziButton;
 	TText *UkupniBodovi;
+	TText *SingleplayerText;
+	TText *MultiplayerText;
 	void __fastcall BrojButtonClick(TObject *Sender);
 	void __fastcall SpajanjeButtonClick(TObject *Sender);
-	void __fastcall AsocijacijeButtonClick(TObject *Sender);
 	void __fastcall KlikButtonClick(TObject *Sender);
 	void __fastcall ZaokruziButtonClick(TObject *Sender);
 private:	// User declarations

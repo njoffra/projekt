@@ -17,7 +17,7 @@
 
 using namespace std;
 
-class Spajanje{
+class Spajanje{  // klasa koja daje par povezanih pojmova iz filea
 
 private:
 	string lijeva_rijec, desna_rijec;
@@ -44,7 +44,7 @@ public:
 	}
 };
 
-class Zadaci{
+class Zadaci{ // klasa koja organizuje jednu igricu, to jest 8 parova koje treba povezati
 private:
 	vector<Spajanje>parovi;
 	string pitanje;
@@ -64,7 +64,7 @@ public:
 	string getPitanje(){
 		return this->pitanje;
 	}
-	void operator!(){
+	void operator!(){   // operator koji cisti vektor kada sakupimo 8 parova
 		this->daj_parove().clear();
 	}
 
@@ -83,7 +83,7 @@ TSpajanjeForma *SpajanjeForma;
 //---------------------------------------------------------------------------
 
 void omoguci_desne(){
-
+	 // olaksava pisanje, smanjuje ponavljanje koda
 	SpajanjeForma->Desno1->Enabled = true;
 	SpajanjeForma->Desno2->Enabled = true;
 	SpajanjeForma->Desno3->Enabled = true;
@@ -106,7 +106,7 @@ void omoguci_desne(){
 
 }
 
-void dodaj_zadatak(){
+void dodaj_zadatak(){ //cita iz filea i dodaje zadatke
 	fstream lijeva_strana_file;
 	fstream desna_strana_file;
 	lijeva_strana_file.open("fajlovi\\LijevaStrana.txt", ios::in);
@@ -154,7 +154,7 @@ __fastcall TSpajanjeForma::TSpajanjeForma(TComponent* Owner)
 	int broj;
 	broj = rand()% svi_zadaci.size();
 	num = broj;
-
+	 // ovo gore se brine o potpunom randomiziranju igre
 	Lijevo1->Text = svi_zadaci[broj].daj_parove()[0].getLijeva().c_str();
 	Lijevo2->Text = svi_zadaci[broj].daj_parove()[1].getLijeva().c_str();
 	Lijevo3->Text = svi_zadaci[broj].daj_parove()[2].getLijeva().c_str();
@@ -184,7 +184,7 @@ void __fastcall TSpajanjeForma::IzlazButtonClick(TObject *Sender)
 		NavigacijaForma->Show();
 }
 //---------------------------------------------------------------------------
-
+ // sve ostalo definise pojedinacnu dugmad, jako repetativno ali mora se
 void __fastcall TSpajanjeForma::Lijevo1Click(TObject *Sender)
 {
 	Lijevo1->Enabled = False;

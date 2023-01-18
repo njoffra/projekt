@@ -8,7 +8,6 @@
 #include "Spajanje.h"
 #include "Klik.h"
 #include "Zaokruzivanje.h"
-#include "Asocijacije.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -33,11 +32,6 @@ void __fastcall TNavigacijaForma::SpajanjeButtonClick(TObject *Sender)
 	this->Hide();
 }
 //---------------------------------------------------------------------------
-void __fastcall TNavigacijaForma::AsocijacijeButtonClick(TObject *Sender)
-{
-	AsocijacijeForma->Show();
-	this->Hide();
-}
 //---------------------------------------------------------------------------
 void __fastcall TNavigacijaForma::KlikButtonClick(TObject *Sender)
 {

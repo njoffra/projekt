@@ -42,7 +42,7 @@ void ocisti(){
 }
 
 
-void izmjesaj_pitanja(){
+void izmjesaj_pitanja(){  // cita iz filea, mjesa pitanja
 // Kad ovaj repetativni kod ubacim u funkciju budu neki errori bez ikakve poruke
 	try{
 		fstream pitanjaFile;
@@ -188,8 +188,8 @@ void __fastcall TZaokruzivanjeForma::PotvrdiButtonClick(TObject *Sender)
 				}
                 broj_pokusaja++;
 
-	if(broj_pokusaja < 10){
-    tacan_odg_rb = rand()% 3 + 1;
+	if(broj_pokusaja < 10){ // ogranicava na 10 pitanja
+	tacan_odg_rb = rand()% 3 + 1; // ovo dole randomizira sve
 			TekstPitanja->Text = pitanja[broj_pokusaja];
 			if(tacan_odg_rb==1){
 				Odgovor1->Text = tacan_odg[broj_pokusaja];
