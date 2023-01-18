@@ -27,7 +27,6 @@ int broj_pokusaja=0;
 int seed;
 
 // mozda se moze deklatist u headeru al me strah ovih errora
-// test test test
 
 vector <String> pitanja;
 vector <String> odg1;
@@ -247,9 +246,7 @@ void __fastcall TZaokruzivanjeForma::PotvrdiButtonClick(TObject *Sender)
 void __fastcall TZaokruzivanjeForma::zatvaranje(TObject *Sender, TCloseAction &Action)
 
 {
-	NavigacijaForma->ZaokruziButton->Enabled = false;
-		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
-		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		NavigacijaForma->ZaokruziButton->Enabled = false;
 		this->Close();
 		NavigacijaForma->Show();
 }

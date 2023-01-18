@@ -38,11 +38,8 @@ __published:	// IDE-managed Components
 	TTimer *Vrijeme;
 	TLabel *VrijemeText;
 	TButton *IzlazPravi;
-	TButton *Button2;
-	void __fastcall Label1Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall NumberClick2(TObject *Sender);
-	//void __fastcall OperatorClick2(TObject *Sender);
 	void __fastcall ButtonJednakoClick(TObject *Sender);
 	void __fastcall OperatorClick(TObject *Sender);
 	void __fastcall BrisiClick(TObject *Sender);
@@ -50,23 +47,12 @@ __published:	// IDE-managed Components
 	void __fastcall VrijemeTimer(TObject *Sender);
 	void __fastcall IzlazPraviClick(TObject *Sender);
 	void __fastcall zatvori(TObject *Sender, TCloseAction &Action);
-	//void __fastcall EditClick(TObject *Sender);
-	//void __fastcall ButtonRezultatClick(TObject *Sender);
+
 private:
 	TDateTime StartTime;	// User declarations
 public:		// User declarations
 	__fastcall TBrojForma(TComponent* Owner);
 };
-
-/*
-    __fastcall TBrojForma::TBrojForma(TComponent* Owner)
-    	: TForm(Owner)
-    	{
-    		StartTime = Now();
-			Vrijeme->Enabled = true;
-    	}
-*/
-
 
 //---------------------------------------------------------------------------
 extern PACKAGE TBrojForma *BrojForma;

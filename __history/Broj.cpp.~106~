@@ -8,6 +8,9 @@
 #include <string>
 #include <stack>
 #include <cmath>
+#include <stdexcept>
+#include <stdlib.h>
+#include <memory>
 
 #pragma hdrstop
 
@@ -18,9 +21,11 @@
 #pragma resource "*.fmx"
 TBrojForma *BrojForma;
 //---------------------------------------------------------------------------
-int result;
 int skor;
-int topscore;
+//std::unique_ptr<int> topscore = nullptr;
+std::unique_ptr<int> topscore = std::make_unique<int>(0);
+std::shared_ptr<int> ptrsuma = std::make_shared<int>(0);
+std::unique_ptr<int> result = std::make_unique<int>(0);
 std::string uString (int a){
   std::ostringstream ss;
   ss<<a;
@@ -33,15 +38,7 @@ __fastcall TBrojForma::TBrojForma(TComponent* Owner)
 		//StartTime = Now();
 		//Vrijeme->Enabled = true;
 }
-//---------------------------------------------------------------------------
 
-
-
-void __fastcall TBrojForma::Label1Click(TObject *Sender)
-{
-
-	//Label2->Text="Nele";
-}
 //---------------------------------------------------------------------------
 const int MIN_NUM = 1;
 const int MAX_NUM = 9;
@@ -51,14 +48,11 @@ void __fastcall TBrojForma::Button1Click(TObject *Sender)
 	StartTime = Now();
     Vrijeme->Enabled = true;
 	  while (true) {
-
 	  int brojevi[5];
-	  int sum=0;
-		for(int i=0; i<5; i++){
-			  brojevi[i] = MIN_NUM +(rand()%(MAX_NUM-MIN_NUM+1));
-			  sum += brojevi[i];
+			for(int i=0; i<5; i++){
+            brojevi[i] = MIN_NUM +(rand()%(MAX_NUM-MIN_NUM+1));
+            *ptrsuma += brojevi[i];
 			}
-;
 	  ButtonNum1->Text=uString(brojevi[0]).c_str();
 
 	  ButtonNum2->Text=uString(brojevi[1]).c_str();
@@ -76,22 +70,22 @@ void __fastcall TBrojForma::Button1Click(TObject *Sender)
 		//int result;
 		switch (op) {
 		  case '+':
-			result = brojevi[1] + sum;
+			*result = brojevi[1] + *ptrsuma;
 			break;
 		  case '/':
-			result = brojevi[2] / sum;
+			*result = brojevi[2] / *ptrsuma;
 			break;
 		  case '*':
-			result = brojevi[3] * sum;
+			*result = brojevi[3] * *ptrsuma;
 			break;
 		  case '-':
-			result = brojevi[4] - sum;
+			*result = brojevi[4] - *ptrsuma;
 			break;
 		}
 
 		// Ako je rezultat u rangu i ako je veci od sume onda ce ga printati i izaci iz loopa
-		if (result > 100 && result <= 1000 && result > sum) {
-		  Label6->Text = uString(result).c_str();
+		if (*result > 100 && *result <= 1000 && *result > *ptrsuma) {
+		  Label6->Text = uString(*result).c_str();
 		  break;
 		}
 	  }
@@ -193,11 +187,12 @@ void __fastcall TBrojForma::ButtonJednakoClick(TObject *Sender)
 			// radi potrebne kalkulacije prije nego pusha na stack
 			while (!ops.empty() && prednost(ops.top()) >= prednost(c))
 			{
+
 				double num2 = numbers.top();
 				numbers.pop();
-                double num1 = numbers.top();
+				double num1 = numbers.top();
                 numbers.pop();
-                char op = ops.top();
+				char op = ops.top();
                 ops.pop();
                 numbers.push(performOp(op, num1, num2));
             }
@@ -231,9 +226,12 @@ void __fastcall TBrojForma::ButtonJednakoClick(TObject *Sender)
         ops.pop();
 		numbers.push(performOp(op, num1, num2));
 		}
-        topscore = numbers.top();
-		ButtonRezultat->Text = numbers.top();
-
+		*topscore=numbers.top();
+        if (topscore) {
+			ButtonRezultat->Text = *topscore;
+		} else {
+			ButtonRezultat->Text = "null";
+			}
 	}
 
 //---------------------------------------------------------------------------
@@ -253,46 +251,47 @@ void __fastcall TBrojForma::BrisiClick(TObject *Sender)
 
 void __fastcall TBrojForma::IzlazClick(TObject *Sender)
 {
-			if(result==topscore){
-						Bodovi->Text="Cestitke, osvojili se maksimalne bodove.";
-						skor = 20;
-							}else if(abs(result - topscore <= 5)){
-											 Bodovi->Text="Osvojili ste 15 bodova.";
-											 skor = 15;
-								}else if(abs(result - topscore <= 10)){
-											 Bodovi->Text="Osvojili ste 10 bodova.";
-											 skor = 10;
-									}else if(abs(result - topscore <= 15)){
-												Bodovi->Text="Osvojili ste 5 bodova.";
-												skor = 5;
-										}else if(abs(result - topscore >= 20)){
-													Bodovi->Text="Osvojili ste 0 bodova. Luzeru.";
-													skor = 0;
-						  }
-NavigacijaForma->BrojButton->Enabled = false;
-NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
-NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
-ButtonNum1->Enabled = false;
-		   ButtonNum2->Enabled = false;
-		   ButtonNum3->Enabled = false;
-		   ButtonNum4->Enabled = false;
-		   ButtonNum5->Enabled = false;
-		   ButtonPlus->Enabled = false;
-		   ButtonMinus->Enabled = false;
-		   ButtonPuta->Enabled = false;
-		   ButtonDijeli->Enabled = false;
-		   ButtonBrisi->Enabled = false;
-		   ButtonLZagrada->Enabled = false;
-		   ButtonDZagrada->Enabled = false;
-		   ButtonJednako->Enabled = false;
-		   EditDisplay->Enabled = false;
-		   VrijemeText->Text = "Vrijeme isteklo";
-		   Vrijeme->Enabled = False;
+if(*result==*topscore){
+		Bodovi->Text="Cestitke, osvojili se maksimalne bodove.";
+		skor = 20;
+		}else if(abs(*result - *topscore <= 5)){
+				Bodovi->Text="Osvojili ste 15 bodova.";
+				skor = 15;
+			}else if(abs(*result - *topscore <= 10)){
+					Bodovi->Text="Osvojili ste 10 bodova.";
+					skor = 10;
+				}else if(abs(*result - *topscore <= 15)){
+						Bodovi->Text="Osvojili ste 5 bodova.";
+						skor = 5;
+					}else if(abs(*result - *topscore >= 20)){
+							Bodovi->Text="Osvojili ste 0 bodova.";
+							skor = 0;
+						}
+
+	NavigacijaForma->BrojButton->Enabled = false;
+	NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+	NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+	ButtonNum1->Enabled = false;
+	ButtonNum2->Enabled = false;
+	ButtonNum3->Enabled = false;
+	ButtonNum4->Enabled = false;
+	ButtonNum5->Enabled = false;
+	ButtonPlus->Enabled = false;
+	ButtonMinus->Enabled = false;
+	ButtonPuta->Enabled = false;
+	ButtonDijeli->Enabled = false;
+	ButtonBrisi->Enabled = false;
+	ButtonLZagrada->Enabled = false;
+	ButtonDZagrada->Enabled = false;
+	ButtonJednako->Enabled = false;
+	EditDisplay->Enabled = false;
+	VrijemeText->Text = "Vrijeme isteklo";
+	Vrijeme->Enabled = False;
 }
 //---------------------------------------------------------------------------
 
 
-void __fastcall TBrojForma::VrijemeTimer(TObject *Sender) //This event occurs every second.
+void __fastcall TBrojForma::VrijemeTimer(TObject *Sender) //ovaj event se desava svake sekunde
 {
 		TDateTime Diff = Now() - StartTime;
 		Word Hour, Min, Sec, MSec;
@@ -327,6 +326,20 @@ void __fastcall TBrojForma::IzlazPraviClick(TObject *Sender)
 {
     this->Close();
 	NavigacijaForma->Show();
+    //resetovanje pointera zbog memory leaks
+	topscore.reset();
+	ptrsuma.reset();
+	result.reset();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TBrojForma::zatvori(TObject *Sender, TCloseAction &Action)
+{
+NavigacijaForma->BrojButton->Enabled = false;
+		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
+		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		this->Close();
+		NavigacijaForma->Show();
 }
 //---------------------------------------------------------------------------
 

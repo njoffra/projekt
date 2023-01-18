@@ -525,8 +525,6 @@ void __fastcall TSpajanjeForma::Desno8Click(TObject *Sender)
 void __fastcall TSpajanjeForma::zatvori(TObject *Sender, TCloseAction &Action)
 {
 	NavigacijaForma->SpajanjeButton->Enabled = false;
-		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
-		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
 		this->Close();
 		NavigacijaForma->Show();
 }

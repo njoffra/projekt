@@ -235,10 +235,4 @@ object BrojForma: TBrojForma
     Left = 288
     Top = 8
   end
-  object Button2: TButton
-    Position.X = 296.000000000000000000
-    Position.Y = 24.000000000000000000
-    TabOrder = 27
-    Text = 'Button2'
-  end
 end

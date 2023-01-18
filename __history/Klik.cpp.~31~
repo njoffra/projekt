@@ -113,7 +113,8 @@ void __fastcall TKlikForma::Igrac1DugmeClick(TObject *Sender)
 	prvi_igrac.ispisi_klikove();
 	if(sekunda1==10){  // ovdje umjesto ovog uslova treba kad istekne timer
 		Igrac1Dugme->Enabled=false;
-        Timer1->Enabled = false;
+		VrijemeText1->Visible= false,
+        VrIsteklo1->Text="Vrijeme isteklo";
 		Igrac2Dugme->Enabled=true;
 	}
 }
@@ -130,8 +131,10 @@ void __fastcall TKlikForma::Igrac2DugmeClick(TObject *Sender)
 	VrijemeText2->Enabled = True;
 	!drugi_igrac;
 	drugi_igrac.ispisi_klikove();
-	if(sekunda2==30) {  // ovdje umjesto ovog uslova treba kad istekne timer
+	if(sekunda2==10) {  // ovdje umjesto ovog uslova treba kad istekne timer
 	   Igrac2Dugme->Enabled=false;
+	   VrijemeText2->Visible= false,
+		VrIsteklo2->Text="Vrijeme isteklo";
 	   if(prvi_igrac.getKlikovi() > drugi_igrac.getKlikovi()){ // ovo poslije svega provjerava koji je igrac pobjedio pa cemo vidjet sta cemo kako cemo dalje
 		RezultatText->Text="Igrac 1 je pobjedio";
 		prvi_igrac.setSkor();
@@ -169,8 +172,10 @@ void __fastcall TKlikForma::Timer2Timer(TObject *Sender)
 	Word Hour, Min, Sec, MSec;
 	DecodeTime(Diff, Hour, Min, Sec, MSec);
 	VrijemeText2->Text = String(Sec);
+    sekunda2=Sec;
 }
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
+
 

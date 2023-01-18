@@ -7,6 +7,7 @@ object BrojForma: TBrojForma
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = zatvori
   DesignerMasterStyle = 0
   object Label1Generisi: TLabel
     Position.X = 248.000000000000000000
@@ -197,17 +198,17 @@ object BrojForma: TBrojForma
     Size.Width = 201.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
-    StyleLookup = 'listboxheaderlabel'
+    StyleLookup = 'labelstyle'
     TabOrder = 21
   end
   object Izlaz: TButton
     Position.X = 488.000000000000000000
-    Position.Y = 416.000000000000000000
+    Position.Y = 376.000000000000000000
     Size.Width = 89.000000000000000000
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 22
-    Text = 'Izlaz'
+    Text = 'Potvrdi'
     OnClick = IzlazClick
   end
   object VrijemeText: TLabel
@@ -216,10 +217,20 @@ object BrojForma: TBrojForma
     Size.Width = 120.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
-    Text = 'VrijemeText'
     TabOrder = 24
   end
+  object IzlazPravi: TButton
+    Position.X = 488.000000000000000000
+    Position.Y = 416.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 25
+    Text = 'Izlaz'
+    OnClick = IzlazPraviClick
+  end
   object Vrijeme: TTimer
+    Enabled = False
     OnTimer = VrijemeTimer
     Left = 288
     Top = 8

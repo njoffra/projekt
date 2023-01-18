@@ -22,7 +22,6 @@
 TBrojForma *BrojForma;
 //---------------------------------------------------------------------------
 int skor;
-//std::unique_ptr<int> topscore = nullptr;
 std::unique_ptr<int> topscore = std::make_unique<int>(0);
 std::shared_ptr<int> ptrsuma = std::make_shared<int>(0);
 std::unique_ptr<int> result = std::make_unique<int>(0);
@@ -35,18 +34,8 @@ std::string uString (int a){
 __fastcall TBrojForma::TBrojForma(TComponent* Owner)
 	: TForm(Owner)
 {
-		//StartTime = Now();
-		//Vrijeme->Enabled = true;
 }
-//---------------------------------------------------------------------------
 
-
-
-void __fastcall TBrojForma::Label1Click(TObject *Sender)
-{
-
-	//Label2->Text="Nele";
-}
 //---------------------------------------------------------------------------
 const int MIN_NUM = 1;
 const int MAX_NUM = 9;
@@ -343,9 +332,7 @@ void __fastcall TBrojForma::IzlazPraviClick(TObject *Sender)
 
 void __fastcall TBrojForma::zatvori(TObject *Sender, TCloseAction &Action)
 {
-NavigacijaForma->BrojButton->Enabled = false;
-		//NavigacijaForma->ukupni_bodovi += skor; // ukupni_bodovi je deklarisana Navigacija.h
-		//NavigacijaForma->UkupniBodovi->Text = NavigacijaForma->ukupni_bodovi;
+		NavigacijaForma->BrojButton->Enabled = false;
 		this->Close();
 		NavigacijaForma->Show();
 }
